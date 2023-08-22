@@ -1,7 +1,11 @@
 @use 'variaveis';
+@use 'header';
 @use 'hero';
 @use 'shows';
 @use 'plans';
+@use 'available-devices';
+@use 'faq';
+@use 'footer';
 
 @font-face {
     font-family: Avenir;
@@ -19,6 +23,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Avenir, sans-serif;
+    list-style: none;
 }
 
 body {
@@ -63,7 +68,9 @@ body {
 }
 
 .button {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 60px;
     font-size: 18px;
@@ -71,10 +78,75 @@ body {
     background-color: #6421ff;
     text-transform: uppercase;
     border-radius: 4px;
-    margin-top: 2vh;
-    margin-bottom: 8px;
+    text-decoration: none;
+    padding: 8px 14px;
+    letter-spacing: 1px;
+    border: 1px solid #6421ff;
+
+    &:hover {
+        background-color: lighten($color: #6421ff, $amount: 3%);
+    }
+    
+
+    &--secondary {
+        background-color: #0063e5;
+        border-color: #0063e5;
+
+        &:hover {
+            background-color: lighten($color: #0063e5, $amount: 3%);
+        }
+    }
+
+    &--dark {
+        background-color: rgba($color: #000000, $alpha: 0.8);
+        border-color: variaveis.$corTextoSecundario;
+
+        &:hover {
+            background-color: rgba($color: variaveis.$corTextoSecundario, $alpha: 0.8);
+            color: variaveis.$corDeFundo;
+        }
+    }
 }
 
 section {
     min-height: 50vw;
+}
+
+.image-text-section{
+    padding: 5.6vw;
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    align-items: center;
+
+    &__text_container {
+        padding: 0 2vw;
+
+        h2 {
+            margin-bottom: 24px;
+        }
+    }
+    img {
+        max-width: 100%;
+    }
+    
+    &--image-full-width {
+        display: block;
+        position: relative;
+        
+        img {
+            max-width: 100%;
+        }
+
+        &__text_container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            // width: calc(50%-5.6vw);
+            padding-right: 11.2vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
 }
